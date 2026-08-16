@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -36,7 +36,7 @@ export function SectionHeading({
 }: {
   title: string;
   subtitle?: string;
-  href?: string;
+  href?: LinkProps["to"];
   linkLabel?: string;
 }) {
   return (
