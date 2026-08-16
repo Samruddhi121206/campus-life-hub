@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 type Theme = "dark" | "light";
 
@@ -90,10 +90,10 @@ export function useCountdown(target: string) {
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, []);
-  return useCallback2(now, target);
+  return useCountdownValue(now, target);
 }
 
-function useCallback2(now: number | null, target: string) {
+function useCountdownValue(now: number | null, target: string) {
   return useMemo(() => {
     if (now === null) return null;
     const diff = new Date(target).getTime() - now;
