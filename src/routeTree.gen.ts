@@ -10,11 +10,36 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnnouncementsRouteImport } from './routes/announcements'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as ClubsIndexRouteImport } from './routes/clubs.index'
+import { Route as ClubsClubIdRouteImport } from './routes/clubs.$clubId'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
+import { Route as EventsEventIdRouteImport } from './routes/events.$eventId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnnouncementsRoute = AnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubsIndexRoute = ClubsIndexRouteImport.update({
+  id: '/clubs/',
+  path: '/clubs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubsClubIdRoute = ClubsClubIdRouteImport.update({
+  id: '/clubs/$clubId',
+  path: '/clubs/$clubId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventsIndexRoute = EventsIndexRouteImport.update({
@@ -22,30 +47,77 @@ const EventsIndexRoute = EventsIndexRouteImport.update({
   path: '/events/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsEventIdRoute = EventsEventIdRouteImport.update({
+  id: '/events/$eventId',
+  path: '/events/$eventId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/clubs/$clubId': typeof ClubsClubIdRoute
+  '/events/$eventId': typeof EventsEventIdRoute
+  '/clubs/': typeof ClubsIndexRoute
   '/events/': typeof EventsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/clubs/$clubId': typeof ClubsClubIdRoute
+  '/events/$eventId': typeof EventsEventIdRoute
+  '/clubs': typeof ClubsIndexRoute
   '/events': typeof EventsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/clubs/$clubId': typeof ClubsClubIdRoute
+  '/events/$eventId': typeof EventsEventIdRoute
+  '/clubs/': typeof ClubsIndexRoute
   '/events/': typeof EventsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/events/'
+  fullPaths:
+    | '/'
+    | '/announcements'
+    | '/leaderboard'
+    | '/clubs/$clubId'
+    | '/events/$eventId'
+    | '/clubs/'
+    | '/events/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events'
-  id: '__root__' | '/' | '/events/'
+  to:
+    | '/'
+    | '/announcements'
+    | '/leaderboard'
+    | '/clubs/$clubId'
+    | '/events/$eventId'
+    | '/clubs'
+    | '/events'
+  id:
+    | '__root__'
+    | '/'
+    | '/announcements'
+    | '/leaderboard'
+    | '/clubs/$clubId'
+    | '/events/$eventId'
+    | '/clubs/'
+    | '/events/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnnouncementsRoute: typeof AnnouncementsRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  ClubsClubIdRoute: typeof ClubsClubIdRoute
+  EventsEventIdRoute: typeof EventsEventIdRoute
+  ClubsIndexRoute: typeof ClubsIndexRoute
   EventsIndexRoute: typeof EventsIndexRoute
 }
 
@@ -58,6 +130,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/announcements': {
+      id: '/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clubs/': {
+      id: '/clubs/'
+      path: '/clubs'
+      fullPath: '/clubs/'
+      preLoaderRoute: typeof ClubsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clubs/$clubId': {
+      id: '/clubs/$clubId'
+      path: '/clubs/$clubId'
+      fullPath: '/clubs/$clubId'
+      preLoaderRoute: typeof ClubsClubIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events/': {
       id: '/events/'
       path: '/events'
@@ -65,11 +165,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events/$eventId': {
+      id: '/events/$eventId'
+      path: '/events/$eventId'
+      fullPath: '/events/$eventId'
+      preLoaderRoute: typeof EventsEventIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnnouncementsRoute: AnnouncementsRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  ClubsClubIdRoute: ClubsClubIdRoute,
+  EventsEventIdRoute: EventsEventIdRoute,
+  ClubsIndexRoute: ClubsIndexRoute,
   EventsIndexRoute: EventsIndexRoute,
 }
 export const routeTree = rootRouteImport
