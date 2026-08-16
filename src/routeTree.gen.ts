@@ -11,7 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnnouncementsRouteImport } from './routes/announcements'
+import { Route as AssignmentsRouteImport } from './routes/assignments'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as NotesRouteImport } from './routes/notes'
+import { Route as TimetableRouteImport } from './routes/timetable'
 import { Route as ClubsIndexRouteImport } from './routes/clubs.index'
 import { Route as ClubsClubIdRouteImport } from './routes/clubs.$clubId'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
@@ -27,9 +32,34 @@ const AnnouncementsRoute = AnnouncementsRouteImport.update({
   path: '/announcements',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssignmentsRoute = AssignmentsRouteImport.update({
+  id: '/assignments',
+  path: '/assignments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeaderboardRoute = LeaderboardRouteImport.update({
   id: '/leaderboard',
   path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotesRoute = NotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimetableRoute = TimetableRouteImport.update({
+  id: '/timetable',
+  path: '/timetable',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClubsIndexRoute = ClubsIndexRouteImport.update({
@@ -56,7 +86,12 @@ const EventsEventIdRoute = EventsEventIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/announcements': typeof AnnouncementsRoute
+  '/assignments': typeof AssignmentsRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/notes': typeof NotesRoute
+  '/timetable': typeof TimetableRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/events/$eventId': typeof EventsEventIdRoute
   '/clubs/': typeof ClubsIndexRoute
@@ -65,7 +100,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/announcements': typeof AnnouncementsRoute
+  '/assignments': typeof AssignmentsRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/notes': typeof NotesRoute
+  '/timetable': typeof TimetableRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/events/$eventId': typeof EventsEventIdRoute
   '/clubs': typeof ClubsIndexRoute
@@ -75,7 +115,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/announcements': typeof AnnouncementsRoute
+  '/assignments': typeof AssignmentsRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/notes': typeof NotesRoute
+  '/timetable': typeof TimetableRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/events/$eventId': typeof EventsEventIdRoute
   '/clubs/': typeof ClubsIndexRoute
@@ -86,7 +131,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/announcements'
+    | '/assignments'
+    | '/contact'
+    | '/dashboard'
     | '/leaderboard'
+    | '/notes'
+    | '/timetable'
     | '/clubs/$clubId'
     | '/events/$eventId'
     | '/clubs/'
@@ -95,7 +145,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/announcements'
+    | '/assignments'
+    | '/contact'
+    | '/dashboard'
     | '/leaderboard'
+    | '/notes'
+    | '/timetable'
     | '/clubs/$clubId'
     | '/events/$eventId'
     | '/clubs'
@@ -104,7 +159,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/announcements'
+    | '/assignments'
+    | '/contact'
+    | '/dashboard'
     | '/leaderboard'
+    | '/notes'
+    | '/timetable'
     | '/clubs/$clubId'
     | '/events/$eventId'
     | '/clubs/'
@@ -114,7 +174,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnnouncementsRoute: typeof AnnouncementsRoute
+  AssignmentsRoute: typeof AssignmentsRoute
+  ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   LeaderboardRoute: typeof LeaderboardRoute
+  NotesRoute: typeof NotesRoute
+  TimetableRoute: typeof TimetableRoute
   ClubsClubIdRoute: typeof ClubsClubIdRoute
   EventsEventIdRoute: typeof EventsEventIdRoute
   ClubsIndexRoute: typeof ClubsIndexRoute
@@ -137,11 +202,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnnouncementsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assignments': {
+      id: '/assignments'
+      path: '/assignments'
+      fullPath: '/assignments'
+      preLoaderRoute: typeof AssignmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/leaderboard': {
       id: '/leaderboard'
       path: '/leaderboard'
       fullPath: '/leaderboard'
       preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes': {
+      id: '/notes'
+      path: '/notes'
+      fullPath: '/notes'
+      preLoaderRoute: typeof NotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timetable': {
+      id: '/timetable'
+      path: '/timetable'
+      fullPath: '/timetable'
+      preLoaderRoute: typeof TimetableRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/clubs/': {
@@ -178,7 +278,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnnouncementsRoute: AnnouncementsRoute,
+  AssignmentsRoute: AssignmentsRoute,
+  ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   LeaderboardRoute: LeaderboardRoute,
+  NotesRoute: NotesRoute,
+  TimetableRoute: TimetableRoute,
   ClubsClubIdRoute: ClubsClubIdRoute,
   EventsEventIdRoute: EventsEventIdRoute,
   ClubsIndexRoute: ClubsIndexRoute,

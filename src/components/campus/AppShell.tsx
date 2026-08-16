@@ -35,7 +35,7 @@ import { announcements, clubs, events, me } from "@/lib/campus-data";
 import { useCampusStore } from "@/lib/campus-store";
 import { cn } from "@/lib/utils";
 
-type NavItem = { label: string; to: LinkProps["to"]; icon: typeof Home };
+type NavItem = { label: string; to: NonNullable<LinkProps["to"]>; icon: typeof Home };
 
 const primaryNav: NavItem[] = [
   { label: "Home", to: "/", icon: Home },
